@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishan Ahlawat - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff5f7;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #e11d48 0%, #ec4899 100%);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background-color: #be123c;
+            padding: 0.8rem 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #e11d48;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: #e11d48;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #e11d48;
+            padding-bottom: 0.5rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+            background: linear-gradient(to bottom, #ffffff, #f0f8ff);
+        }
+
+        #home h2 {
+            border: none;
+        }
+
+        /* About Section */
+        #about {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f0f8ff" width="1200" height="800"/><circle cx="200" cy="150" r="100" fill="%232c5aa0" opacity="0.05"/><circle cx="900" cy="600" r="120" fill="%231e4178" opacity="0.05"/></svg>');
+            background-size: cover;
+        }
+
+        .profile-img {
+            float: left;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 1.5rem 1rem 0;
+            border: 4px solid #e11d48;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .work-img {
+            float: right;
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            margin: 0 0 1rem 1.5rem;
+            border: 3px solid #db2777;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e11d48 0%, #ec4899 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .hobbies {
+            clear: both;
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hobby-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .hobby-img {
+            width: 100%;
+            height: 140px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #f43f5e;
+            background: linear-gradient(135deg, #fb7185 0%, #f472b6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Services Section */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .service-box {
+            background: #ffe4e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #f43f5e;
+        }
+
+        .service-box h3 {
+            color: #e11d48;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .portfolio-card {
+            border: 2px solid #f43f5e;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .portfolio-card-content {
+            padding: 1rem;
+        }
+
+        .portfolio-card h3 {
+            color: #e11d48;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #e11d48 0%, #ec4899 100%);
+            color: white;
+        }
+
+        #contact h2 {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-box {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box a {
+            color: white;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Aside */
+        aside {
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #fbbf24;
+            margin-bottom: 2rem;
+        }
+
+        aside h3 {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        aside ul {
+            list-style: none;
+        }
+
+        aside ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #fde68a;
+        }
+
+        aside ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #9f1239;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #fecdd3;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.3rem 0;
+            }
+
+            .profile-img, .work-img {
+                float: none;
+                margin: 1rem auto;
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Ishan Ahlawat</h1>
+        <p>B.Tech AI & ML Student | VIT Vellore | Reg No: 24BAI0147</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://github.com/IKRiku/" target="_blank">GitHub →</a></li>
+            <li><a href="mailto:ishan5680000@gmail.com">Email Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+            <h2>Welcome to My Portfolio!</h2>
+            <p>Hello! I'm Ishan Ahlawat, a second-year B.Tech student specializing in Artificial Intelligence and Machine Learning at VIT Vellore. I'm passionate about technology, coding, and creating innovative solutions.</p>
+            <p>This portfolio website showcases my journey, skills, and projects. Feel free to explore and learn more about my work and interests!</p>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="clearfix">
+            <h2>About Me</h2>
+            
+            <div class="profile-img">IA</div>
+            
+            <p>Hi, I'm Ishan Ahlawat from New Delhi, currently pursuing my B.Tech in Artificial Intelligence and Machine Learning at VIT Vellore. I'm in my second year (4th semester) with registration number 24BAI0147.</p>
+            
+            <div class="work-img">💻</div>
+            
+            <p>I have a strong interest in AI, machine learning, and web development. Throughout my academic journey, I've been learning various programming languages and technologies to build my skills in software development and artificial intelligence.</p>
+            
+            <p>As a student, I'm always eager to learn new technologies and take on challenging projects. I believe in continuous learning and staying updated with the latest trends in technology. My goal is to contribute to innovative projects that can make a real-world impact.</p>
+            
+            <div class="hobbies">
+                <div class="hobby-item">
+                    <div class="hobby-img">💻</div>
+                    <p><strong>Coding & Development</strong></p>
+                </div>
+                <div class="hobby-item">
+                    <div class="hobby-img">🤖</div>
+                    <p><strong>AI & Machine Learning</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2>My Services</h2>
+            <p>As a student developer, I offer various services in the field of web development and programming.</p>
+            
+            <div class="services-list">
+                <div class="service-box">
+                    <h3>Web Development</h3>
+                    <p>Creating responsive and functional websites using HTML, CSS, and JavaScript.</p>
+                </div>
+                
+                <div class="service-box">
+                    <h3>Python Programming</h3>
+                    <p>Developing Python applications and scripts for various use cases and automation.</p>
+                </div>
+                
+                <div class="service-box">
+                    <h3>Machine Learning Projects</h3>
+                    <p>Working on ML projects and implementing algorithms for data analysis.</p>
+                </div>
+                
+                <div class="service-box">
+                    <h3>Problem Solving</h3>
+                    <p>Solving coding problems and participating in competitive programming challenges.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <h2>My Portfolio</h2>
+            <p>Here are some of the projects I've worked on during my learning journey.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div style="width: 100%; height: 160px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">Web</div>
+                    <div class="portfolio-card-content">
+                        <h3>Portfolio Website</h3>
+                        <p>A personal portfolio website built with HTML and CSS to showcase my work and skills.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div style="width: 100%; height: 160px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">Python</div>
+                    <div class="portfolio-card-content">
+                        <h3>Python Projects</h3>
+                        <p>Various Python programming projects including automation scripts and data analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div style="width: 100%; height: 160px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">ML</div>
+                    <div class="portfolio-card-content">
+                        <h3>ML Projects</h3>
+                        <p>Machine learning projects focusing on classification and prediction algorithms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aside Section -->
+        <aside>
+            <h3>📋 Quick Info</h3>
+            <ul>
+                <li><strong>Name:</strong> <span>Ishan Ahlawat</span></li>
+                <li><strong>Registration No:</strong> <span>24BAI0147</span></li>
+                <li><strong>University:</strong> <span>VIT Vellore</span></li>
+                <li><strong>Course:</strong> <span>B.Tech AI & ML</span></li>
+                <li><strong>Year:</strong> <span>2nd Year (4th Semester)</span></li>
+                <li><strong>Hometown:</strong> <span>New Delhi</span></li>
+            </ul>
+        </aside>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p style="text-align: center;">Feel free to reach out to me through any of these channels!</p>
+            
+            <div class="contact-info">
+                <div class="contact-box">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:ishan5680000@gmail.com">ishan5680000@gmail.com</a>
+                </div>
+                
+                <div class="contact-box">
+                    <h3>🐙 GitHub</h3>
+                    <a href="https://github.com/IKRiku/" target="_blank">github.com/IKRiku</a>
+                </div>
+                
+                <div class="contact-box">
+                    <h3>🏫 University</h3>
+                    <p>VIT Vellore</p>
+                    <p>Tamil Nadu, India</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ishan Ahlawat | Registration No: 24BAI0147</p>
+        <p>VIT Vellore | B.Tech AI & ML</p>
+        <p><a href="#home">Back to Top ↑</a></p>
+    </footer>
+</body>
+</html>
